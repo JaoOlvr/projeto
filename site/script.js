@@ -1,0 +1,87 @@
+ // Dados dos produtos (você pode substituir com seus próprios dados)
+ const produtos = [
+    {
+        nome: "Produto 1",
+        url: "https://exemplo.com/produto1",
+        icone: "📱",
+        categoria: "Eletrônicos"
+    },
+    {
+        nome: "Produto 2",
+        url: "https://exemplo.com/produto2",
+        icone: "👕",
+        categoria: "Moda"
+    },
+    {
+        nome: "Produto 3",
+        url: "https://exemplo.com/produto3",
+        icone: "🏠",
+        categoria: "Casa"
+    },
+    {
+        nome: "Produto 4",
+        url: "https://exemplo.com/produto4",
+        icone: "🎮",
+        categoria: "Games"
+    },
+    {
+        nome: "Produto 5",
+        url: "https://exemplo.com/produto5",
+        icone: "📚",
+        categoria: "Livros"
+    }
+];
+
+// Função para carregar os links dinamicamente
+function carregarLinks() {
+    const linksContainer = document.getElementById('links-container');
+    linksContainer.innerHTML = '';
+    
+    produtos.forEach(produto => {
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'card link-card shadow';
+        
+        cardDiv.innerHTML = `
+            <a href="${produto.url}" target="_blank" rel="noopener noreferrer" class="card-body d-flex align-items-center py-3">
+                <span class="fs-4 me-2">${produto.icone}</span>
+                <span class="fw-bold">${produto.nome}</span>
+                <span class="badge bg-light text-dark category-badge">${produto.categoria}</span>
+            </a>
+        `;
+        
+        linksContainer.appendChild(cardDiv);
+    });
+}
+
+// Alternar tema claro/escuro
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-theme');
+    
+    if (document.body.classList.contains('dark-theme')) {
+        themeToggle.textContent = '☀️';
+        themeToggle.classList.remove('btn-light');
+        themeToggle.classList.add('btn-dark');
+    } else {
+        themeToggle.textContent = '🌙';
+        themeToggle.classList.remove('btn-dark');
+        themeToggle.classList.add('btn-light');
+    }
+});
+
+// Inicializar a página
+window.addEventListener('DOMContentLoaded', () => {
+    carregarLinks();
+});
+
+// Rastrear cliques nos links (opcional)
+document.addEventListener('click', (e) => {
+    const link = e.target.closest('.link-card a');
+    if (link) {
+        const linkText = link.textContent.trim();
+        console.log(`Link clicado: ${linkText}`);
+        
+        // Aqui você poderia implementar analytics
+        // Por exemplo: gtag('event', 'click', { 'link_name': linkText });
+    }
+});
