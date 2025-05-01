@@ -1,13 +1,12 @@
 :root {
-    --light-gradient-start: #fceabb;
-    --light-gradient-middle: #f8b500;
-    --light-gradient-end: #e09200;
-    --dark-gradient-start: #141e30;
-    --dark-gradient-end: #243b55;
+    --light-gradient-start: #FFCB30;
+    --light-gradient-end: #FFA500;
+    --dark-gradient-start: #1A1A1A;
+    --dark-gradient-end: #333333;
 }
 
 body {
-    background: linear-gradient(135deg, var(--light-gradient-start), var(--light-gradient-middle), var(--light-gradient-end));
+    background: linear-gradient(135deg, var(--light-gradient-start), var(--light-gradient-end));
     min-height: 100vh;
     transition: background 0.3s ease;
 }
@@ -59,17 +58,21 @@ body.dark-theme {
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
+    background-color: #000 !important;
+    color: #FFCB30 !important;
+    font-weight: bold;
 }
 
 /* Dark theme modifications */
 body.dark-theme .link-card {
-    background-color: #3f464e !important;
+    background-color: #2c3e50 !important;
     color: white;
 }
 
 body.dark-theme .category-badge {
-    background-color: #76797b !important;
-    color: #ecf0f1;
+    background-color: #FFCB30 !important;
+    color: #000 !important;
+    font-weight: bold;
 }
 
 /* Animations */
@@ -83,6 +86,26 @@ body.dark-theme .category-badge {
 #links-container .link-card:nth-child(3) { animation-delay: 0.3s; }
 #links-container .link-card:nth-child(4) { animation-delay: 0.4s; }
 #links-container .link-card:nth-child(5) { animation-delay: 0.5s; }
+
+body.dark-theme .btn-dark {
+    background-color: #FFCB30 !important;
+    color: #000 !important;
+    border-color: #FFCB30 !important;
+}
+
+#searchInput::placeholder {
+    opacity: 0.7;
+}
+
+body.dark-theme #searchInput {
+    background-color: #333;
+    color: #fff;
+    border-color: #555;
+}
+
+body.dark-theme #searchInput::placeholder {
+    color: #ccc;
+}
 
 /* Theme toggle button */
 .theme-toggle {
