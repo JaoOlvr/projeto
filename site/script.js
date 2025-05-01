@@ -1,4 +1,3 @@
-// Dados dos produtos (você pode substituir com seus próprios dados)
 const produtos = [
     {
         nome: "Produto 1",
@@ -32,15 +31,22 @@ const produtos = [
     }
 ];
 
+// Função para remover acentos de um texto
+function removerAcentos(texto) {
+    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
 // Função para carregar os links dinamicamente
 function carregarLinks(filtro = '') {
     const linksContainer = document.getElementById('links-container');
     linksContainer.innerHTML = '';
     
+    const filtroSemAcento = removerAcentos(filtro.toLowerCase());
+    
     const produtosFiltrados = filtro 
         ? produtos.filter(produto => 
-            produto.nome.toLowerCase().includes(filtro.toLowerCase()) || 
-            produto.categoria.toLowerCase().includes(filtro.toLowerCase())
+            removerAcentos(produto.nome.toLowerCase()).includes(filtroSemAcento) || 
+            removerAcentos(produto.categoria.toLowerCase()).includes(filtroSemAcento)
           )
         : produtos;
     
