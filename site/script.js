@@ -1,5 +1,5 @@
- // Dados dos produtos (você pode substituir com seus próprios dados)
- const produtos = [
+// Dados dos produtos (você pode substituir com seus próprios dados)
+const produtos = [
     {
         nome: "Produto 1",
         url: "https://exemplo.com/produto1",
@@ -33,11 +33,27 @@
 ];
 
 // Função para carregar os links dinamicamente
-function carregarLinks() {
+function carregarLinks(filtro = '') {
     const linksContainer = document.getElementById('links-container');
     linksContainer.innerHTML = '';
     
-    produtos.forEach(produto => {
+    const produtosFiltrados = filtro 
+        ? produtos.filter(produto => 
+            produto.nome.toLowerCase().includes(filtro.toLowerCase()) || 
+            produto.categoria.toLowerCase().includes(filtro.toLowerCase())
+          )
+        : produtos;
+    
+    if (produtosFiltrados.length === 0) {
+        linksContainer.innerHTML = `
+            <div class="alert alert-warning text-center">
+                Nenhum produto encontrado para "${filtro}" 😕
+            </div>
+        `;
+        return;
+    }
+    
+    produtosFiltrados.forEach(produto => {
         const cardDiv = document.createElement('div');
         cardDiv.className = 'card link-card shadow';
         
@@ -45,7 +61,7 @@ function carregarLinks() {
             <a href="${produto.url}" target="_blank" rel="noopener noreferrer" class="card-body d-flex align-items-center py-3">
                 <span class="fs-4 me-2">${produto.icone}</span>
                 <span class="fw-bold">${produto.nome}</span>
-                <span class="badge bg-light text-dark category-badge">${produto.categoria}</span>
+                <span class="badge category-badge">${produto.categoria}</span>
             </a>
         `;
         
@@ -72,6 +88,33 @@ themeToggle.addEventListener('click', () => {
 // Inicializar a página
 window.addEventListener('DOMContentLoaded', () => {
     carregarLinks();
+    
+    // Configurar a funcionalidade de busca
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    
+    // Função para realizar a busca
+    function realizarBusca() {
+        const termo = searchInput.value.trim();
+        carregarLinks(termo);
+    }
+    
+    // Evento de clique no botão de busca
+    searchButton.addEventListener('click', realizarBusca);
+    
+    // Evento de pressionar Enter no campo de busca
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            realizarBusca();
+        }
+    });
+    
+    // Evento para limpar resultados quando o campo estiver vazio
+    searchInput.addEventListener('input', () => {
+        if (searchInput.value.trim() === '') {
+            carregarLinks();
+        }
+    });
 });
 
 // Rastrear cliques nos links (opcional)
