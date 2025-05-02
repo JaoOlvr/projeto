@@ -1,3 +1,4 @@
+// Dados dos produtos (você pode substituir com seus próprios dados)
 const produtos = [
     {
         nome: "Produto 1",
@@ -43,11 +44,24 @@ function carregarLinks(filtro = '') {
     
     const filtroSemAcento = removerAcentos(filtro.toLowerCase());
     
+    // Trata casos como "produto1" para encontrar "Produto 1"
+    const filtroNormalizado = filtroSemAcento
+        .replace(/([a-z])(\d+)/g, '$1 $2') // Adiciona espaço entre letra e número
+        .replace(/produto(\s*\d+)/gi, 'produto $1') // Normaliza "produto1" para "produto 1"
+        .trim();
+    
     const produtosFiltrados = filtro 
-        ? produtos.filter(produto => 
-            removerAcentos(produto.nome.toLowerCase()).includes(filtroSemAcento) || 
-            removerAcentos(produto.categoria.toLowerCase()).includes(filtroSemAcento)
-          )
+        ? produtos.filter(produto => {
+            const nomeSemAcento = removerAcentos(produto.nome.toLowerCase());
+            const nomeNormalizado = nomeSemAcento.replace(/\s+/g, ' '); // Remove espaços extras
+            const categoriaSemAcento = removerAcentos(produto.categoria.toLowerCase());
+            
+            // Busca tanto pelo filtro original quanto pelo normalizado
+            return nomeNormalizado.includes(filtroSemAcento) || 
+                   nomeNormalizado.includes(filtroNormalizado) || 
+                   nomeNormalizado.replace(/\s+/g, '').includes(filtroSemAcento) || // Remove todos os espaços
+                   categoriaSemAcento.includes(filtroSemAcento);
+          })
         : produtos;
     
     if (produtosFiltrados.length === 0) {
