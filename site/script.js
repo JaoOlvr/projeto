@@ -1,35 +1,40 @@
-// Dados dos produtos com imagens
+// Dados dos produtos com imagens e sequência
 const produtos = [
     {
-        nome: "Produto 1",
-        url: "https://s.shopee.com.br/7fMxpRfzIz",
-        imagem: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0f2ujjac.webp", // Substituir com URL real da imagem
-        categoria: "Automotivo"
+        nome: "Compressor portátil",
+        url: "https://exemplo.com/produto1",
+        imagem: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0f1fz36d.webp", // Substituir com URL real da imagem
+        categoria: "Eletrônicos",
+        sequencia: "001" // Número de sequência formatado
     },
     {
         nome: "Produto 2",
         url: "https://exemplo.com/produto2",
         imagem: "/api/placeholder/50/50", // Substituir com URL real da imagem
-        categoria: "Moda"
+        categoria: "Moda",
+        sequencia: "002"
     },
     {
         nome: "Produto 3",
         url: "https://exemplo.com/produto3",
         imagem: "/api/placeholder/50/50", // Substituir com URL real da imagem
-        categoria: "Casa"
+        categoria: "Casa",
+        sequencia: "003"
     },
     {
         nome: "Produto 4",
         url: "https://exemplo.com/produto4",
         imagem: "/api/placeholder/50/50", // Substituir com URL real da imagem
-        categoria: "Games"
+        categoria: "Games",
+        sequencia: "004"
     },
     {
         nome: "Produto 5",
         url: "https://exemplo.com/produto5",
         imagem: "/api/placeholder/50/50", // Substituir com URL real da imagem
-        categoria: "Eletrônicos"
-    },
+        categoria: "Livros",
+        sequencia: "005"
+    }
 ];
 
 // Função para remover acentos de um texto
@@ -55,12 +60,14 @@ function carregarLinks(filtro = '') {
             const nomeSemAcento = removerAcentos(produto.nome.toLowerCase());
             const nomeNormalizado = nomeSemAcento.replace(/\s+/g, ' '); // Remove espaços extras
             const categoriaSemAcento = removerAcentos(produto.categoria.toLowerCase());
+            const sequenciaSemAcento = produto.sequencia;
             
             // Busca tanto pelo filtro original quanto pelo normalizado
             return nomeNormalizado.includes(filtroSemAcento) || 
                    nomeNormalizado.includes(filtroNormalizado) || 
                    nomeNormalizado.replace(/\s+/g, '').includes(filtroSemAcento) || // Remove todos os espaços
-                   categoriaSemAcento.includes(filtroSemAcento);
+                   categoriaSemAcento.includes(filtroSemAcento) ||
+                   sequenciaSemAcento.includes(filtroSemAcento); // Busca também pela sequência
           })
         : produtos;
     
@@ -79,6 +86,7 @@ function carregarLinks(filtro = '') {
         
         cardDiv.innerHTML = `
             <a href="${produto.url}" target="_blank" rel="noopener noreferrer" class="card-body d-flex align-items-center py-3">
+                <div class="sequence-badge">${produto.sequencia}</div>
                 <img src="${produto.imagem}" alt="${produto.nome}" class="product-img me-2">
                 <span class="fw-bold">${produto.nome}</span>
                 <span class="badge category-badge">${produto.categoria}</span>

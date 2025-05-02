@@ -67,6 +67,26 @@ body.dark-theme {
     transform: scale(1.05);
 }
 
+/* Estilização do número de sequência */
+.sequence-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #FFCB30;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 10px;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.link-card:hover .sequence-badge {
+    background-color: #FFCB30;
+    color: #000;
+}
+
 .category-badge {
     position: absolute;
     right: 10px;
@@ -87,6 +107,16 @@ body.dark-theme .category-badge {
     background-color: #FFCB30 !important;
     color: #000 !important;
     font-weight: bold;
+}
+
+body.dark-theme .sequence-badge {
+    background-color: rgba(255, 203, 48, 0.8);
+    color: #000;
+}
+
+body.dark-theme .link-card:hover .sequence-badge {
+    background-color: #fff;
+    color: #000;
 }
 
 /* Animations */
