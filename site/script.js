@@ -1,35 +1,35 @@
-// Dados dos produtos (você pode substituir com seus próprios dados)
+// Dados dos produtos com imagens
 const produtos = [
     {
         nome: "Produto 1",
-        url: "https://exemplo.com/produto1",
-        icone: "📱",
-        categoria: "Eletrônicos"
+        url: "https://s.shopee.com.br/7fMxpRfzIz",
+        imagem: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0eymu7e8.webp", // Substituir com URL real da imagem
+        categoria: "Automotivo"
     },
     {
         nome: "Produto 2",
         url: "https://exemplo.com/produto2",
-        icone: "👕",
+        imagem: "/api/placeholder/50/50", // Substituir com URL real da imagem
         categoria: "Moda"
     },
     {
         nome: "Produto 3",
         url: "https://exemplo.com/produto3",
-        icone: "🏠",
+        imagem: "/api/placeholder/50/50", // Substituir com URL real da imagem
         categoria: "Casa"
     },
     {
         nome: "Produto 4",
         url: "https://exemplo.com/produto4",
-        icone: "🎮",
+        imagem: "/api/placeholder/50/50", // Substituir com URL real da imagem
         categoria: "Games"
     },
     {
         nome: "Produto 5",
         url: "https://exemplo.com/produto5",
-        icone: "📚",
-        categoria: "Livros"
-    }
+        imagem: "/api/placeholder/50/50", // Substituir com URL real da imagem
+        categoria: "Eletrônicos"
+    },
 ];
 
 // Função para remover acentos de um texto
@@ -79,7 +79,7 @@ function carregarLinks(filtro = '') {
         
         cardDiv.innerHTML = `
             <a href="${produto.url}" target="_blank" rel="noopener noreferrer" class="card-body d-flex align-items-center py-3">
-                <span class="fs-4 me-2">${produto.icone}</span>
+                <img src="${produto.imagem}" alt="${produto.nome}" class="product-img me-2">
                 <span class="fw-bold">${produto.nome}</span>
                 <span class="badge category-badge">${produto.categoria}</span>
             </a>
