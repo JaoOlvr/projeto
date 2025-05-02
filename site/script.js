@@ -3,7 +3,7 @@ const produtos = [
     {
         nome: "Produto 1",
         url: "https://s.shopee.com.br/7fMxpRfzIz",
-        imagem: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0eymu7e8.webp", // Substituir com URL real da imagem
+        imagem: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0f2ujjac.webp", // Substituir com URL real da imagem
         categoria: "Automotivo"
     },
     {
