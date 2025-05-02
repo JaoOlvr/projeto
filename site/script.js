@@ -113,26 +113,38 @@ window.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('searchInput');
     const searchButton = document.getElementById('searchButton');
     
+    // Variável para controlar o tempo entre buscas
+    let timeoutId = null;
+    
     // Função para realizar a busca
     function realizarBusca() {
         const termo = searchInput.value.trim();
         carregarLinks(termo);
     }
     
-    // Evento de clique no botão de busca
-    searchButton.addEventListener('click', realizarBusca);
-    
-    // Evento de pressionar Enter no campo de busca
-    searchInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            realizarBusca();
+    // Evento de digitação no campo de busca com debounce
+    searchInput.addEventListener('input', () => {
+        // Limpa o timeout anterior
+        if (timeoutId) {
+            clearTimeout(timeoutId);
         }
+        
+        // Define um novo timeout (300ms de atraso para melhor desempenho)
+        timeoutId = setTimeout(() => {
+            realizarBusca();
+        }, 300);
     });
     
-    // Evento para limpar resultados quando o campo estiver vazio
-    searchInput.addEventListener('input', () => {
-        if (searchInput.value.trim() === '') {
-            carregarLinks();
+    // Mantém o evento de clique no botão de busca
+    searchButton.addEventListener('click', realizarBusca);
+    
+    // Mantém o evento de pressionar Enter no campo de busca
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+            }
+            realizarBusca();
         }
     });
 });
