@@ -8,10 +8,10 @@ const produtos = [
         sequencia: "001" // Número de sequência formatado
     },
     {
-        nome: "Produto 2",
+        nome: "Parafusadeira/Furadeira",
         url: "https://exemplo.com/produto2",
-        imagem: "/api/placeholder/50/50", // Substituir com URL real da imagem
-        categoria: "Moda",
+        imagem: "https://sdmntpreastus2.oaiusercontent.com/files/00000000-6ff4-61f6-b0e3-dc07b28d15c9/raw?se=2025-05-03T01%3A09%3A41Z&sp=r&sv=2024-08-04&sr=b&scid=17cac00e-187a-51f9-8724-04f804a9bf77&skoid=3f3a9132-9530-48ef-96b7-fee5a811733f&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-02T20%3A37%3A50Z&ske=2025-05-03T20%3A37%3A50Z&sks=b&skv=2024-08-04&sig=o/3%2BFujzDqoPXJB1rMXrDqa1LmWqZXUZUEWUyXLgvvs%3D", // Substituir com URL real da imagem
+        categoria: "Eletrônicos",
         sequencia: "002"
     },
     {
@@ -82,14 +82,16 @@ function carregarLinks(filtro = '') {
     
     produtosFiltrados.forEach(produto => {
         const cardDiv = document.createElement('div');
-        cardDiv.className = 'card link-card shadow';
+        cardDiv.className = 'card link-card shadow mb-3'; // Adicionei margem inferior
         
         cardDiv.innerHTML = `
             <a href="${produto.url}" target="_blank" rel="noopener noreferrer" class="card-body d-flex align-items-center py-3">
                 <div class="sequence-badge">${produto.sequencia}</div>
-                <img src="${produto.imagem}" alt="${produto.nome}" class="product-img me-2">
-                <span class="fw-bold">${produto.nome}</span>
-                <span class="badge category-badge">${produto.categoria}</span>
+                <img src="${produto.imagem}" alt="${produto.nome}" class="product-img">
+                <div>
+                    <span class="fw-bold fs-5">${produto.nome}</span>
+                    <span class="badge category-badge">${produto.categoria}</span>
+                </div>
             </a>
         `;
         
