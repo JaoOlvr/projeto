@@ -3,7 +3,7 @@ const produtos = [
     {
         nome: "Compressor portátil",
         url: "https://s.shopee.com.br/4An5r67XDK",
-        imagem: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lqk9vt0f1fz36d.webp", // Substituir com URL real da imagem
+        imagem: "https://sdmntpreastus2.oaiusercontent.com/files/00000000-63fc-61f6-bc91-82a566c21439/raw?se=2025-05-03T02%3A03%3A51Z&sp=r&sv=2024-08-04&sr=b&scid=de58eb94-56e7-5364-b545-84bfef84405e&skoid=3f3a9132-9530-48ef-96b7-fee5a811733f&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-02T20%3A35%3A25Z&ske=2025-05-03T20%3A35%3A25Z&sks=b&skv=2024-08-04&sig=DAnGBFzA23iTsinZ62YhezERc2XMQhVc8/U15Z6FZzs%3D", // Substituir com URL real da imagem
         categoria: "Eletrônicos",
         sequencia: "001" // Número de sequência formatado
     },
@@ -15,10 +15,10 @@ const produtos = [
         sequencia: "002"
     },
     {
-        nome: "Produto 3",
+        nome: "Relógio smartwatch x9 pro",
         url: "https://exemplo.com/produto3",
         imagem: "/api/placeholder/50/50", // Substituir com URL real da imagem
-        categoria: "Casa",
+        categoria: "Acessórios",
         sequencia: "003"
     },
     {
