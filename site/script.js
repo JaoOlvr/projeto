@@ -3,20 +3,20 @@ const produtos = [
     {
         nome: "Compressor portátil",
         url: "https://s.shopee.com.br/4An5r67XDK",
-        imagem: "https://sdmntpreastus2.oaiusercontent.com/files/00000000-63fc-61f6-bc91-82a566c21439/raw?se=2025-05-03T02%3A03%3A51Z&sp=r&sv=2024-08-04&sr=b&scid=de58eb94-56e7-5364-b545-84bfef84405e&skoid=3f3a9132-9530-48ef-96b7-fee5a811733f&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-02T20%3A35%3A25Z&ske=2025-05-03T20%3A35%3A25Z&sks=b&skv=2024-08-04&sig=DAnGBFzA23iTsinZ62YhezERc2XMQhVc8/U15Z6FZzs%3D", // Substituir com URL real da imagem
+        imagem: "https://i.pinimg.com/736x/8d/07/3e/8d073ea1dfd28d9b4cfd8ff0950ef0cc.jpg", // Substituir com URL real da imagem
         categoria: "Eletrônicos",
         sequencia: "001" // Número de sequência formatado
     },
     {
         nome: "Parafusadeira/Furadeira",
         url: "https://s.shopee.com.br/6fUQniCVNq",
-        imagem: "https://sdmntpreastus2.oaiusercontent.com/files/00000000-6ff4-61f6-b0e3-dc07b28d15c9/raw?se=2025-05-03T01%3A09%3A41Z&sp=r&sv=2024-08-04&sr=b&scid=17cac00e-187a-51f9-8724-04f804a9bf77&skoid=3f3a9132-9530-48ef-96b7-fee5a811733f&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-02T20%3A37%3A50Z&ske=2025-05-03T20%3A37%3A50Z&sks=b&skv=2024-08-04&sig=o/3%2BFujzDqoPXJB1rMXrDqa1LmWqZXUZUEWUyXLgvvs%3D", // Substituir com URL real da imagem
+        imagem: "https://i.pinimg.com/736x/42/72/d3/4272d372560feed02428b594702e32ae.jpg", // Substituir com URL real da imagem
         categoria: "Eletrônicos",
         sequencia: "002"
     },
     {
         nome: "Relógio smartwatch x9 pro",
-        url: "https://exemplo.com/produto3",
+        url: "https://s.shopee.com.br/AA4KZfEfF3",
         imagem: "/api/placeholder/50/50", // Substituir com URL real da imagem
         categoria: "Acessórios",
         sequencia: "003"
