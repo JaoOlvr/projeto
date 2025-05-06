@@ -17,7 +17,7 @@ const produtos = [
     {
         nome: "Relógio smartwatch x9 pro",
         url: "https://s.shopee.com.br/AA4KZfEfF3",
-        imagem: "/api/placeholder/50/50", // Substituir com URL real da imagem
+        imagem: "https://i.pinimg.com/736x/20/22/71/202271608644b284ff030db8b15c111f.jpg", // Substituir com URL real da imagem
         categoria: "Acessórios",
         sequencia: "003"
     },
