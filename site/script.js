@@ -22,8 +22,8 @@ const produtos = [
         sequencia: "003"
     },
     {
-        nome: "Produto 4",
-        url: "https://exemplo.com/produto4",
+        nome: "Sapateira Organizadora",
+        url: "https://s.shopee.com.br/9zkz7pVGg2",
         imagem: "/api/placeholder/50/50", // Substituir com URL real da imagem
         categoria: "Games",
         sequencia: "004"
