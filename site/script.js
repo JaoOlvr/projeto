@@ -36,7 +36,7 @@ const produtos = [
         sequencia: "005"
     },
     {
-        nome: "Cadeira Ergonômica",
+        nome: "Lava Louças Portátil",
         url: "https://s.shopee.com.br/8Kd7DGOYJK",
         imagem: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m850ox58hvxt34@resize_w900_nl.webp", // Substituir com URL real da imagem
         categoria: "Casa",
