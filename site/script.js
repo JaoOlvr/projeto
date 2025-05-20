@@ -34,7 +34,15 @@ const produtos = [
         imagem: "https://i.pinimg.com/736x/50/a5/ce/50a5ce28e744f183cf6ab2fa0ca9f208.jpg", // Substituir com URL real da imagem
         categoria: "Casa",
         sequencia: "005"
-    }
+    },
+    {
+        nome: "Cadeira Ergonômica",
+        url: "https://s.shopee.com.br/8Kd7DGOYJK",
+        imagem: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m850ox58hvxt34@resize_w900_nl.webp", // Substituir com URL real da imagem
+        categoria: "Casa",
+        sequencia: "006"
+    },
+
 ];
 
 // Função para remover acentos de um texto
