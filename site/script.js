@@ -29,9 +29,9 @@ const produtos = [
         sequencia: "004"
     },
     {
-        nome: "Produto 5",
-        url: "https://exemplo.com/produto5",
-        imagem: "/api/placeholder/50/50", // Substituir com URL real da imagem
+        nome: "Cadeira Ergonômica",
+        url: "https://s.shopee.com.br/7fNQObJWgp",
+        imagem: "https://i.pinimg.com/736x/50/a5/ce/50a5ce28e744f183cf6ab2fa0ca9f208.jpg", // Substituir com URL real da imagem
         categoria: "Livros",
         sequencia: "005"
     }
