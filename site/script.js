@@ -24,7 +24,7 @@ const produtos = [
     {
         nome: "Macaco Hidráulico",
         url: "https://s.shopee.com.br/50MLqv8pLE",
-        imagem: "/api/placeholder/50/50", // Substituir com URL real da imagem
+        imagem: "https://i.pinimg.com/736x/a1/69/a5/a169a55d9d779ba4a0da366842d784c7.jpg", // Substituir com URL real da imagem
         categoria: "Ferramentas",
         sequencia: "004"
     },
