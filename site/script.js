@@ -11,7 +11,7 @@ const produtos = [
         nome: "Parafusadeira/Furadeira",
         url: "https://s.shopee.com.br/6fUQniCVNq",
         imagem: "https://i.pinimg.com/736x/42/72/d3/4272d372560feed02428b594702e32ae.jpg", // Substituir com URL real da imagem
-        categoria: "Eletrônicos",
+        categoria: "Ferramentas",
         sequencia: "002"
     },
     {
@@ -22,10 +22,10 @@ const produtos = [
         sequencia: "003"
     },
     {
-        nome: "Sapateira Organizadora",
-        url: "https://s.shopee.com.br/9zkz7pVGg2",
+        nome: "Macaco Hidráulico",
+        url: "https://s.shopee.com.br/50MLqv8pLE",
         imagem: "/api/placeholder/50/50", // Substituir com URL real da imagem
-        categoria: "Games",
+        categoria: "Ferramentas",
         sequencia: "004"
     },
     {
