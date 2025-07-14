@@ -107,24 +107,49 @@ function carregarLinks(filtro = '') {
     });
 }
 
-// Alternar tema claro/escuro
-const themeToggle = document.getElementById('themeToggle');
-themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-theme');
-    
-    if (document.body.classList.contains('dark-theme')) {
+// Função para aplicar o tema com persistência
+function aplicarTemaSalvo() {
+    const temaSalvo = localStorage.getItem('theme');
+    const sistemaPrefereEscuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (temaSalvo === 'dark' || (!temaSalvo && sistemaPrefereEscuro)) {
+        document.body.classList.add('dark-theme');
         themeToggle.textContent = '☀️';
         themeToggle.classList.remove('btn-light');
         themeToggle.classList.add('btn-dark');
+        themeToggle.setAttribute('aria-label', 'Ativar modo claro');
+    } else {
+        document.body.classList.remove('dark-theme');
+        themeToggle.textContent = '🌙';
+        themeToggle.classList.remove('btn-dark');
+        themeToggle.classList.add('btn-light');
+        themeToggle.setAttribute('aria-label', 'Ativar modo escuro');
+    }
+}
+
+// Alternar tema e salvar no localStorage
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', () => {
+    const modoEscuroAtivo = document.body.classList.toggle('dark-theme');
+
+    localStorage.setItem('theme', modoEscuroAtivo ? 'dark' : 'light');
+
+    if (modoEscuroAtivo) {
+        themeToggle.textContent = '☀️';
+        themeToggle.classList.remove('btn-light');
+        themeToggle.classList.add('btn-dark');
+        themeToggle.setAttribute('aria-label', 'Ativar modo claro');
     } else {
         themeToggle.textContent = '🌙';
         themeToggle.classList.remove('btn-dark');
         themeToggle.classList.add('btn-light');
+        themeToggle.setAttribute('aria-label', 'Ativar modo escuro');
     }
 });
 
 // Inicializar a página
 window.addEventListener('DOMContentLoaded', () => {
+    aplicarTemaSalvo();
     carregarLinks();
     
     // Configurar a funcionalidade de busca
