@@ -3,51 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos</title>
+    <title>Produtos – Cabra dos Achados</title>
+
+    <!-- Bootstrap & Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- Estilos -->
     <link rel="stylesheet" href="site/style.css">
+
+    <!-- Favicon -->
     <link rel="shortcut icon" href="site/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <!-- Theme Toggle Button -->
-<button class="btn btn-light rounded-circle theme-toggle" id="themeToggle" aria-label="Ativar modo escuro">🌙</button>
-    
+
+    <!-- Botão de tema -->
+    <button class="btn btn-light rounded-circle theme-toggle"
+            id="themeToggle"
+            aria-label="Ativar modo escuro">🌙</button>
+
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6">
-                <!-- Profile Section -->
+
+                <!-- Perfil -->
                 <div class="text-center mb-4">
-                    <img src="site/images/profile.png" alt="Foto de Perfil" class="profile-img rounded-circle mb-3">
+                    <img src="site/images/profile.png" alt="Foto de Perfil"
+                         class="profile-img rounded-circle mb-3">
                     <h1 class="profile-name fs-2">cabradosachados</h1>
-                    <p class="profile-bio mx-auto" style="max-width: 400px;">O cabra que desbrava a Shopee atrás dos melhores achados! 🛒🔥 #achados #shopee</p>
+                    <p class="profile-bio mx-auto" style="max-width: 400px;">
+                        O cabra que desbrava a Shopee atrás dos melhores achados! 🛒🔥 #achados #shopee
+                    </p>
                 </div>
-                
-                <!-- Search Section -->
+
+                <!-- Busca -->
                 <div class="mb-4">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="searchInput" placeholder="Buscar por nome, categoria ou número do protuto..." aria-label="Buscar produtos">
-                        <button class="btn btn-dark" type="button" id="searchButton">
-                            🔍
+                        <input type="text" class="form-control"
+                               id="searchInput"
+                               placeholder="Buscar por nome, categoria ou número do produto..."
+                               aria-label="Buscar produtos">
+                        <button class="btn btn-dark search-btn"
+                                type="button"
+                                id="searchButton"
+                                aria-label="Buscar">
+                            <i class="bi bi-search"></i>
                         </button>
                     </div>
                 </div>
-                
-                <!-- Links Section -->
-                <div class="d-flex flex-column gap-3 mb-4" id="links-container">
-                    <!-- Links will be added via JavaScript -->
-                </div>
-                
-                <!-- Footer -->
+
+                <!-- Cards de produtos -->
+                <div class="d-flex flex-column" id="links-container"></div>
+
+                <!-- Rodapé -->
                 <div class="text-center mt-4">
-                    <p class="text-white small">© 2025 <i class="bi bi-github"></i>JaoOlvr - Todos os direitos reservados</p>
+                    <p class="text-white small">
+                        © 2025 <i class="bi bi-github"></i> JaoOlvr – Todos os direitos reservados
+                    </p>
                 </div>
+
             </div>
         </div>
     </div>
-        
+
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    
     <script src="site/script.js"></script>
 </body>
 </html>

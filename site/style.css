@@ -1,192 +1,136 @@
 :root {
     --light-gradient-start: #FFCB30;
-    --light-gradient-end: #FFA500;
-    --dark-gradient-start: #1A1A1A;
-    --dark-gradient-end: #333333;
+    --light-gradient-end:   #FFA500;
+    --dark-gradient-start:  #1A1A1A;
+    --dark-gradient-end:    #333333;
 }
 
+/* ---------- Fundo ---------- */
 body {
-    background: linear-gradient(135deg, var(--light-gradient-start), var(--light-gradient-end));
+    background: linear-gradient(135deg,
+                var(--light-gradient-start),
+                var(--light-gradient-end));
     min-height: 100vh;
     transition: background 0.3s ease;
 }
 
 body.dark-theme {
-    background: linear-gradient(135deg, var(--dark-gradient-start), var(--dark-gradient-end));
+    background: linear-gradient(135deg,
+                var(--dark-gradient-start),
+                var(--dark-gradient-end));
 }
 
+/* ---------- Perfil ---------- */
 .profile-img {
     width: 120px;
     height: 120px;
     object-fit: cover;
-    border: 4px solid white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 4px solid #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,.1);
 }
 
-.profile-name {
-    font-weight: bold;
-    color: white;
+.profile-name { font-weight: 700; color: #fff; }
+
+.profile-bio  { color: #222; }
+body.dark-theme .profile-bio { color: #ddd; }
+
+/* ---------- Container de links ---------- */
+#links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;          /* 20 px de respiro */
+    margin-bottom: 2rem;
 }
 
-.profile-bio {
-    color: rgba(255, 255, 255, 0.9);
-}
-
+/* ---------- Card ---------- */
 .link-card {
-    transition: all 0.3s ease;
-    animation: fadeIn 0.3s ease forwards;
-    opacity: 0;
     position: relative;
     overflow: hidden;
+    transition: transform .25s ease, box-shadow .25s ease;
+    animation: fadeIn .3s ease forwards;
+    opacity: 0;
 }
-
 .link-card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0,0,0,.15);
 }
+.link-card a { text-decoration: none; color: inherit; }
 
-.link-card:active {
-    transform: translateY(0);
-}
+/* Delay para animação em cascata (até 6 cards) */
+#links-container .link-card:nth-child(1){animation-delay:.1s;}
+#links-container .link-card:nth-child(2){animation-delay:.2s;}
+#links-container .link-card:nth-child(3){animation-delay:.3s;}
+#links-container .link-card:nth-child(4){animation-delay:.4s;}
+#links-container .link-card:nth-child(5){animation-delay:.5s;}
+#links-container .link-card:nth-child(6){animation-delay:.6s;}
 
-.link-card a {
-    text-decoration: none;
-    color: inherit;
-}
-
-/* Estilização da imagem do produto - AUMENTADA */
-.product-img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease;
-    margin-right: 15px; /* Aumentando o espaço entre a imagem e o texto */
-}
-
-.link-card:hover .product-img {
-    transform: scale(1.05);
-}
-
-/* Ajuste no card para acomodar a imagem maior */
-.link-card .card-body {
-    padding: 15px;
-    min-height: 110px; /* Altura mínima para garantir espaço suficiente */
-}
-
-/* Estilização do número de sequência */
-.sequence-badge {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #FFCB30;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 3px 8px;
-    border-radius: 10px;
-    z-index: 2;
-    transition: all 0.3s ease;
-}
-
-.link-card:hover .sequence-badge {
-    background-color: #FFCB30;
-    color: #000;
-}
-
-.category-badge {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #000 !important;
-    color: #FFCB30 !important;
-    font-weight: bold;
-    font-size: 0.85rem; /* Aumentando um pouco o tamanho da fonte */
-    padding: 5px 10px; /* Aumentando um pouco o padding */
-}
-
-/* Dark theme modifications */
-body.dark-theme .link-card {
-    background-color: #2c3e50 !important;
-    color: white;
-}
-
-body.dark-theme .category-badge {
-    background-color: #FFCB30 !important;
-    color: #000 !important;
-    font-weight: bold;
-}
-
-body.dark-theme .sequence-badge {
-    background-color: rgba(255, 203, 48, 0.8);
-    color: #000;
-}
-
-body.dark-theme .link-card:hover .sequence-badge {
-    background-color: #fff;
-    color: #000;
-}
-
-/* Animations */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
-#links-container .link-card:nth-child(1) { animation-delay: 0.1s; }
-#links-container .link-card:nth-child(2) { animation-delay: 0.2s; }
-#links-container .link-card:nth-child(3) { animation-delay: 0.3s; }
-#links-container .link-card:nth-child(4) { animation-delay: 0.4s; }
-#links-container .link-card:nth-child(5) { animation-delay: 0.5s; }
-#links-container .link-card:nth-child(6) { animation-delay: 0.6s; }
+/* ---------- Imagem do produto ---------- */
+.product-img {
+    width: 100px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0,0,0,.15);
+    margin-right: 15px;
+    transition: transform .3s ease;
+}
+.link-card:hover .product-img { transform: scale(1.05); }
 
-body.dark-theme .btn-dark {
-    background-color: #FFCB30 !important;
-    color: #000 !important;
-    border-color: #FFCB30 !important;
+/* ---------- Número de sequência ---------- */
+.sequence-badge {
+    position:absolute; top:8px; left:8px;
+    background:rgba(0,0,0,.7);
+    color:#FFCB30;
+    font-size:12px; font-weight:700;
+    padding:3px 8px; border-radius:10px;
+    transition:all .3s ease;
+}
+.link-card:hover .sequence-badge {
+    background:#FFCB30; color:#000;
 }
 
-#searchInput::placeholder {
-    opacity: 0.7;
+/* ---------- Badge de categoria ----------
+   (cor vem inline via JS)                */
+.category-badge {
+    position:absolute; right:10px; top:50%;
+    transform:translateY(-50%);
+    font-size:.8rem; font-weight:600;
+    padding:4px 10px; border-radius:12px;
+    color:#fff;
 }
 
-body.dark-theme #searchInput {
-    background-color: #333;
-    color: #fff;
-    border-color: #555;
-}
+/* ---------- Tema escuro nos cards ---------- */
+body.dark-theme .link-card      { background:#2c3e50!important; color:#fff; }
+body.dark-theme .sequence-badge { background:rgba(255,203,48,.8); color:#000; }
+body.dark-theme .link-card:hover .sequence-badge { background:#fff; color:#000; }
 
-body.dark-theme #searchInput::placeholder {
-    color: #ccc;
+/* ---------- Botão de busca ---------- */
+.search-btn {
+    font-size:1.25rem;
+    display:flex; align-items:center; justify-content:center;
+    transition:transform .15s, box-shadow .15s;
 }
+.search-btn:hover {
+    transform:translateY(-2px);
+    box-shadow:0 4px 8px rgba(0,0,0,.25);
+}
+.search-btn:active { transform:translateY(0); box-shadow:none; }
+body.dark-theme .search-btn { background:#FFCB30; color:#000; border:none; }
 
-/* Theme toggle button */
+/* ---------- Botão de tema ---------- */
 .theme-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    position:fixed; top:20px; right:20px; z-index:1000;
+    width:50px; height:50px; font-size:1.5rem;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 2px 8px rgba(0,0,0,.2);
+    transition:all .3s ease;
 }
-
-.theme-toggle:focus {
-    outline: 2px solid #ffc107;
-    outline-offset: 2px;
-}
-
-/* Mobile: botão no canto inferior direito */
-@media (max-width: 576px) {
-    .theme-toggle {
-        top: auto;
-        bottom: 20px;
-        right: 20px;
-    }
+.theme-toggle:focus { outline:2px solid #ffc107; outline-offset:2px; }
+@media(max-width:576px){
+    .theme-toggle{ top:auto; bottom:20px; right:20px; }
 }

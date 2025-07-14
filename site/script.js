@@ -1,205 +1,159 @@
-// Dados dos produtos com imagens e sequência
+// ---------- Dados dos produtos ----------
 const produtos = [
-    {
-        nome: "Compressor portátil",
-        url: "https://s.shopee.com.br/4An5r67XDK",
-        imagem: "https://i.pinimg.com/736x/8d/07/3e/8d073ea1dfd28d9b4cfd8ff0950ef0cc.jpg", // Substituir com URL real da imagem
-        categoria: "Eletrônicos",
-        sequencia: "001" // Número de sequência formatado
-    },
-    {
-        nome: "Parafusadeira/Furadeira",
-        url: "https://s.shopee.com.br/6fUQniCVNq",
-        imagem: "https://i.pinimg.com/736x/42/72/d3/4272d372560feed02428b594702e32ae.jpg", // Substituir com URL real da imagem
-        categoria: "Ferramentas",
-        sequencia: "002"
-    },
-    {
-        nome: "Relógio smartwatch x9 pro",
-        url: "https://s.shopee.com.br/AA4KZfEfF3",
-        imagem: "https://i.pinimg.com/736x/20/22/71/202271608644b284ff030db8b15c111f.jpg", // Substituir com URL real da imagem
-        categoria: "Acessórios",
-        sequencia: "003"
-    },
-    {
-        nome: "Macaco Hidráulico",
-        url: "https://s.shopee.com.br/50MLqv8pLE",
-        imagem: "https://i.pinimg.com/736x/a1/69/a5/a169a55d9d779ba4a0da366842d784c7.jpg", // Substituir com URL real da imagem
-        categoria: "Ferramentas",
-        sequencia: "004"
-    },
-    {
-        nome: "Cadeira Ergonômica",
-        url: "https://s.shopee.com.br/7fNQObJWgp",
-        imagem: "https://i.pinimg.com/736x/50/a5/ce/50a5ce28e744f183cf6ab2fa0ca9f208.jpg", // Substituir com URL real da imagem
-        categoria: "Casa",
-        sequencia: "005"
-    },
-    {
-        nome: "Lava Louças Portátil",
-        url: "https://s.shopee.com.br/8Kd7DGOYJK",
-        imagem: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m850ox58hvxt34@resize_w900_nl.webp", // Substituir com URL real da imagem
-        categoria: "Casa",
-        sequencia: "006"
-    },
+    { nome: "Compressor portátil",
+      url: "https://s.shopee.com.br/4An5r67XDK",
+      imagem: "https://i.pinimg.com/736x/8d/07/3e/8d073ea1dfd28d9b4cfd8ff0950ef0cc.jpg",
+      categoria: "Eletrônicos",
+      sequencia: "001" },
 
+    { nome: "Parafusadeira/Furadeira",
+      url: "https://s.shopee.com.br/6fUQniCVNq",
+      imagem: "https://i.pinimg.com/736x/42/72/d3/4272d372560feed02428b594702e32ae.jpg",
+      categoria: "Ferramentas",
+      sequencia: "002" },
+
+    { nome: "Relógio smartwatch X9 Pro",
+      url: "https://s.shopee.com.br/AA4KZfEfF3",
+      imagem: "https://i.pinimg.com/736x/20/22/71/202271608644b284ff030db8b15c111f.jpg",
+      categoria: "Acessórios",
+      sequencia: "003" },
+
+    { nome: "Macaco Hidráulico",
+      url: "https://s.shopee.com.br/50MLqv8pLE",
+      imagem: "https://i.pinimg.com/736x/a1/69/a5/a169a55d9d779ba4a0da366842d784c7.jpg",
+      categoria: "Ferramentas",
+      sequencia: "004" },
+
+    { nome: "Cadeira Ergonômica",
+      url: "https://s.shopee.com.br/7fNQObJWgp",
+      imagem: "https://i.pinimg.com/736x/50/a5/ce/50a5ce28e744f183cf6ab2fa0ca9f208.jpg",
+      categoria: "Casa",
+      sequencia: "005" },
+
+    { nome: "Lava‑Louças Portátil",
+      url: "https://s.shopee.com.br/8Kd7DGOYJK",
+      imagem: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m850ox58hvxt34@resize_w900_nl.webp",
+      categoria: "Casa",
+      sequencia: "006" }
 ];
 
-// Função para remover acentos de um texto
-function removerAcentos(texto) {
-    return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-}
+// ---------- Cores por categoria ----------
+const coresCategoria = {
+    "Eletrônicos": "#0d6efd",
+    "Ferramentas": "#6f42c1",
+    "Acessórios":  "#d63384",
+    "Casa":        "#20c997"
+};
 
-// Função para carregar os links dinamicamente
-function carregarLinks(filtro = '') {
-    const linksContainer = document.getElementById('links-container');
-    linksContainer.innerHTML = '';
-    
-    const filtroSemAcento = removerAcentos(filtro.toLowerCase());
-    
-    // Trata casos como "produto1" para encontrar "Produto 1"
-    const filtroNormalizado = filtroSemAcento
-        .replace(/([a-z])(\d+)/g, '$1 $2') // Adiciona espaço entre letra e número
-        .replace(/produto(\s*\d+)/gi, 'produto $1') // Normaliza "produto1" para "produto 1"
-        .trim();
-    
-    const produtosFiltrados = filtro 
-        ? produtos.filter(produto => {
-            const nomeSemAcento = removerAcentos(produto.nome.toLowerCase());
-            const nomeNormalizado = nomeSemAcento.replace(/\s+/g, ' '); // Remove espaços extras
-            const categoriaSemAcento = removerAcentos(produto.categoria.toLowerCase());
-            const sequenciaSemAcento = produto.sequencia;
-            
-            // Busca tanto pelo filtro original quanto pelo normalizado
-            return nomeNormalizado.includes(filtroSemAcento) || 
-                   nomeNormalizado.includes(filtroNormalizado) || 
-                   nomeNormalizado.replace(/\s+/g, '').includes(filtroSemAcento) || // Remove todos os espaços
-                   categoriaSemAcento.includes(filtroSemAcento) ||
-                   sequenciaSemAcento.includes(filtroSemAcento); // Busca também pela sequência
+// ---------- Utilidades ----------
+const removerAcentos = txt =>
+    txt.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+// ---------- Monta cards ----------
+function carregarLinks(filtro = "") {
+    const elContainer = document.getElementById("links-container");
+    elContainer.innerHTML = "";
+
+    const filtroNormal = removerAcentos(filtro.toLowerCase());
+
+    const produtosFiltrados = filtro
+        ? produtos.filter(p => {
+              const nome = removerAcentos(p.nome.toLowerCase());
+              const categoria = removerAcentos(p.categoria.toLowerCase());
+              return nome.includes(filtroNormal) ||
+                     categoria.includes(filtroNormal) ||
+                     p.sequencia.includes(filtroNormal);
           })
         : produtos;
-    
-    if (produtosFiltrados.length === 0) {
-        linksContainer.innerHTML = `
-            <div class="alert alert-warning text-center">
-                Nenhum produto encontrado para "${filtro}" 😕
-            </div>
-        `;
+
+    if (!produtosFiltrados.length) {
+        elContainer.innerHTML = `
+           <div class="alert alert-warning text-center">
+               Nenhum produto encontrado para "${filtro}" 😕
+           </div>`;
         return;
     }
-    
-    produtosFiltrados.forEach(produto => {
-        const cardDiv = document.createElement('div');
-        cardDiv.className = 'card link-card shadow mb-3'; // Adicionei margem inferior
-        
-        cardDiv.innerHTML = `
-            <a href="${produto.url}" target="_blank" rel="noopener noreferrer" class="card-body d-flex align-items-center py-3">
-                <div class="sequence-badge">${produto.sequencia}</div>
-                <img src="${produto.imagem}" alt="${produto.nome}" class="product-img">
-                <div>
-                    <span class="fw-bold fs-5">${produto.nome}</span>
-                    <span class="badge category-badge">${produto.categoria}</span>
-                </div>
-            </a>
-        `;
-        
-        linksContainer.appendChild(cardDiv);
+
+    produtosFiltrados.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "card link-card shadow";
+
+        card.innerHTML = `
+          <a href="${p.url}" target="_blank" rel="noopener" 
+             class="card-body d-flex align-items-center py-3">
+              <div class="sequence-badge">${p.sequencia}</div>
+              <img src="${p.imagem}" alt="${p.nome}" class="product-img" loading="lazy">
+              <div>
+                  <span class="fw-bold fs-5">${p.nome}</span>
+                  <span class="badge category-badge"
+                        style="background-color:${coresCategoria[p.categoria] || '#000'}">
+                        ${p.categoria}
+                  </span>
+              </div>
+          </a>`;
+        elContainer.appendChild(card);
     });
 }
 
-// Função para aplicar o tema com persistência
-function aplicarTemaSalvo() {
-    const temaSalvo = localStorage.getItem('theme');
-    const sistemaPrefereEscuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+// ---------- Tema escuro/claro ----------
+const themeToggle = document.getElementById("themeToggle");
 
-    if (temaSalvo === 'dark' || (!temaSalvo && sistemaPrefereEscuro)) {
-        document.body.classList.add('dark-theme');
-        themeToggle.textContent = '☀️';
-        themeToggle.classList.remove('btn-light');
-        themeToggle.classList.add('btn-dark');
-        themeToggle.setAttribute('aria-label', 'Ativar modo claro');
-    } else {
-        document.body.classList.remove('dark-theme');
-        themeToggle.textContent = '🌙';
-        themeToggle.classList.remove('btn-dark');
-        themeToggle.classList.add('btn-light');
-        themeToggle.setAttribute('aria-label', 'Ativar modo escuro');
-    }
+// Aplica tema salvo ou preferência do sistema
+function aplicarTemaSalvo() {
+    const salvo = localStorage.getItem("theme");
+    const sistemaEscuro =
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    const escuro = salvo === "dark" || (!salvo && sistemaEscuro);
+
+    document.body.classList.toggle("dark-theme", escuro);
+    themeToggle.textContent = escuro ? "☀️" : "🌙";
+    themeToggle.classList.toggle("btn-dark", escuro);
+    themeToggle.classList.toggle("btn-light", !escuro);
+    themeToggle.setAttribute(
+        "aria-label",
+        escuro ? "Ativar modo claro" : "Ativar modo escuro"
+    );
 }
 
-// Alternar tema e salvar no localStorage
-const themeToggle = document.getElementById('themeToggle');
-themeToggle.addEventListener('click', () => {
-    const modoEscuroAtivo = document.body.classList.toggle('dark-theme');
+themeToggle.addEventListener("click", () => {
+    const escuro = document.body.classList.toggle("dark-theme");
+    localStorage.setItem("theme", escuro ? "dark" : "light");
 
-    localStorage.setItem('theme', modoEscuroAtivo ? 'dark' : 'light');
-
-    if (modoEscuroAtivo) {
-        themeToggle.textContent = '☀️';
-        themeToggle.classList.remove('btn-light');
-        themeToggle.classList.add('btn-dark');
-        themeToggle.setAttribute('aria-label', 'Ativar modo claro');
-    } else {
-        themeToggle.textContent = '🌙';
-        themeToggle.classList.remove('btn-dark');
-        themeToggle.classList.add('btn-light');
-        themeToggle.setAttribute('aria-label', 'Ativar modo escuro');
-    }
+    themeToggle.textContent = escuro ? "☀️" : "🌙";
+    themeToggle.classList.toggle("btn-dark", escuro);
+    themeToggle.classList.toggle("btn-light", !escuro);
+    themeToggle.setAttribute(
+        "aria-label",
+        escuro ? "Ativar modo claro" : "Ativar modo escuro"
+    );
 });
 
-// Inicializar a página
-window.addEventListener('DOMContentLoaded', () => {
+// ---------- Busca com debounce ----------
+function iniciarBusca() {
+    const input  = document.getElementById("searchInput");
+    const button = document.getElementById("searchButton");
+    let timeout;
+
+    const buscar = () => carregarLinks(input.value.trim());
+
+    input.addEventListener("input", () => {
+        clearTimeout(timeout);
+        timeout = setTimeout(buscar, 300);
+    });
+
+    button.addEventListener("click", buscar);
+    input.addEventListener("keypress", e => {
+        if (e.key === "Enter") {
+            clearTimeout(timeout);
+            buscar();
+        }
+    });
+}
+
+// ---------- Init ----------
+window.addEventListener("DOMContentLoaded", () => {
     aplicarTemaSalvo();
     carregarLinks();
-    
-    // Configurar a funcionalidade de busca
-    const searchInput = document.getElementById('searchInput');
-    const searchButton = document.getElementById('searchButton');
-    
-    // Variável para controlar o tempo entre buscas
-    let timeoutId = null;
-    
-    // Função para realizar a busca
-    function realizarBusca() {
-        const termo = searchInput.value.trim();
-        carregarLinks(termo);
-    }
-    
-    // Evento de digitação no campo de busca com debounce
-    searchInput.addEventListener('input', () => {
-        // Limpa o timeout anterior
-        if (timeoutId) {
-            clearTimeout(timeoutId);
-        }
-        
-        // Define um novo timeout (300ms de atraso para melhor desempenho)
-        timeoutId = setTimeout(() => {
-            realizarBusca();
-        }, 300);
-    });
-    
-    // Mantém o evento de clique no botão de busca
-    searchButton.addEventListener('click', realizarBusca);
-    
-    // Mantém o evento de pressionar Enter no campo de busca
-    searchInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            if (timeoutId) {
-                clearTimeout(timeoutId);
-            }
-            realizarBusca();
-        }
-    });
-});
-
-// Rastrear cliques nos links (opcional)
-document.addEventListener('click', (e) => {
-    const link = e.target.closest('.link-card a');
-    if (link) {
-        const linkText = link.textContent.trim();
-        console.log(`Link clicado: ${linkText}`);
-        
-        // Aqui você poderia implementar analytics
-        // Por exemplo: gtag('event', 'click', { 'link_name': linkText });
-    }
+    iniciarBusca();
 });
