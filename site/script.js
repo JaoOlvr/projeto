@@ -132,22 +132,13 @@ themeToggle.addEventListener("click", () => {
 // ---------- Busca com debounce ----------
 function iniciarBusca() {
     const input  = document.getElementById("searchInput");
-    const button = document.getElementById("searchButton");
-    let timeout;
-
-    const buscar = () => carregarLinks(input.value.trim());
-
     input.addEventListener("input", () => {
         clearTimeout(timeout);
-        timeout = setTimeout(buscar, 300);
-    });
-
-    button.addEventListener("click", buscar);
-    input.addEventListener("keypress", e => {
-        if (e.key === "Enter") {
-            clearTimeout(timeout);
-            buscar();
-        }
+        timeout = setTimeout(() => {
+            filtroAtual = input.value.trim();
+            paginaAtual = 1;
+            carregarLinks(filtroAtual, false);
+        }, 300);
     });
 }
 
@@ -157,3 +148,17 @@ window.addEventListener("DOMContentLoaded", () => {
     carregarLinks();
     iniciarBusca();
 });
+
+const ITENS_POR_PAGINA = 5;
+let paginaAtual = 1;
+let filtroAtual = "";
+
+// Observer
+const observer = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+        paginaAtual++;
+        carregarLinks(filtroAtual, true);
+    }
+}, { threshold: 1 });
+
+observer.observe(document.getElementById("sentinela"));
