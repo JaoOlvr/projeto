@@ -4,6 +4,24 @@
     --dark-gradient-start:  #1A1A1A;
     --dark-gradient-end:    #333333;
 }
+/* ——— Largura máxima e centralização ——— */
+.app-wrapper {
+    max-width: 540px;    /* nunca passa disso, mesmo em desktop */
+    margin-inline: auto; /* centraliza em telas largas */
+    padding-inline: 1rem;/* 16 px de margem em mobile e desktop */
+}
+
+/* ≤576px → já herda padding 1rem e sem max‑width */
+
+/* 577–991px  -------------------------------------------------- */
+@media (min-width: 577px) and (max-width: 991px) {
+    .app-wrapper { max-width: 720px; }
+}
+
+/* ≥992px  ------------------------------------------------------ */
+@media (min-width: 992px) {
+    .app-wrapper { max-width: 1080px; }
+}
 
 /* ---------- Fundo ---------- */
 body {
@@ -102,10 +120,10 @@ body.dark-theme .profile-bio { color: #ddd; }
 /* ---------- Badge de categoria ----------
    (cor vem inline via JS)                */
 .category-badge {
-    position:absolute; right:10px; top:50%;
+    position:absolute; right:10px; top:20%;
     transform:translateY(-50%);
     font-size:.8rem; font-weight:600;
-    padding:4px 10px; border-radius:12px;
+    padding:4px 10px; border-radius:5px;
     color:#fff;
 }
 
@@ -182,3 +200,23 @@ html, body {
     height: 100%;
     overflow-x: hidden;
 }
+/* ----- animação abrir/fechar ----- */
+.card-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .35s ease;
+    padding-inline: 1rem;   /* igual card-body */
+    padding-bottom: 0;      /* fechado */
+}
+.card.open .card-details {
+    max-height: 260px;    /* espaço suficiente p/ descrição + botão */
+    padding-bottom: 1rem;   /* dá respiro quando aberto */
+}
+
+/* Ícone twist opcional (setinha) */
+.card-toggle::after {
+    content: '⌄';
+    margin-left: .5rem;
+    transition: transform .50s;
+}
+.card.open .card-toggle::after { transform: rotate(180deg); }
