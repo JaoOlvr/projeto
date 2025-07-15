@@ -120,11 +120,15 @@ body.dark-theme .profile-bio { color: #ddd; }
 /* ---------- Badge de categoria ----------
    (cor vem inline via JS)                */
 .category-badge {
-    position:absolute; right:10px; top:20%;
-    transform:translateY(-50%);
-    font-size:.8rem; font-weight:600;
-    padding:4px 10px; border-radius:5px;
-    color:#fff;
+    position: absolute;
+    top: 10px;              /* distância do topo */
+    right: 12px;            /* distância da borda direita */
+    font-size: .8rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 12px;
+    color: #fff;
+    white-space: nowrap;    /* evita quebrar em duas linhas */
 }
 
 /* ---------- Tema escuro nos cards ---------- */
