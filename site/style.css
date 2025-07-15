@@ -224,3 +224,20 @@ html, body {
     transition: transform .50s;
 }
 .card.open .card-toggle::after { transform: rotate(180deg); }
+/* Social icons */
+.social-links i {
+    font-size: 1.6rem;      /* tamanho equilibrado */
+    transition: transform .2s, color .2s;
+}
+
+.social-links a:hover i {
+    transform: translateY(-2px) scale(1.1);
+    color: #ff4d6d;         /* rosa‑coral de destaque */
+}
+
+body.dark-theme .social-links i {
+    color: #fff;
+}
+body.dark-theme .social-links a:hover i {
+    color: #fff;
+}

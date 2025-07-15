@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,8 @@
 
     <!-- Bootstrap & Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css"
+        rel="stylesheet">
 
     <!-- Estilos -->
     <link rel="stylesheet" href="site/style.css">
@@ -15,62 +17,68 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="site/images/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <!-- Botão de tema -->
-    <button class="btn btn-light rounded-circle theme-toggle"
-            id="themeToggle"
-            aria-label="Ativar modo escuro">🌙</button>
+    <button class="btn btn-light rounded-circle theme-toggle" id="themeToggle"
+        aria-label="Ativar modo escuro">🌙</button>
     <div class="app-wrapper">
-      <!-- TODO: move aqui todo o conteúdo que estava no .container ou .container-fluid -->
-       <div class="app-wrapper py-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6">
+        <!-- TODO: move aqui todo o conteúdo que estava no .container ou .container-fluid -->
+        <div class="app-wrapper py-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
 
-                <!-- Perfil -->
-                <div class="text-center mb-4">
-                    <img src="site/images/profile.png" alt="Foto de Perfil"
-                         class="profile-img rounded-circle mb-3">
-                    <h1 class="profile-name fs-2">cabradosachados</h1>
-                    <p class="profile-bio mx-auto" style="max-width: 400px;">
-                        O cabra que desbrava a Shopee atrás dos melhores achados! 🛒🔥 #achados #shopee
-                    </p>
-                </div>
-
-                <!-- Busca -->
-                <div class="mb-4 sticky-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control"
-                               id="searchInput"
-                               placeholder="Buscar por nome, categoria ou número do produto..."
-                               aria-label="Buscar produtos">
-                        <button class="btn btn-dark search-btn"
-                                type="button"
-                                id="searchButton"
-                                aria-label="Buscar">
-                            <i class="bi bi-search"></i>
-                        </button>
+                    <!-- Perfil -->
+                    <div class="text-center mb-4">
+                        <img src="site/images/profile.png" alt="Foto de Perfil" class="profile-img rounded-circle mb-3">
+                        <h1 class="profile-name fs-2">cabradosachados</h1>
+                        <p class="profile-bio mx-auto" style="max-width: 400px;">
+                            O cabra que desbrava a Shopee atrás dos melhores achados! 🛒🔥 #achados #shopee
+                        </p>
                     </div>
+                    <!-- Social links -->
+                    <div class="social-links d-flex justify-content-center gap-4 mt-3 mb-2">
+                        <a href="https://www.instagram.com/SEU_USUARIO" target="_blank" aria-label="Instagram"
+                            class="text-reset">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@SEU_USUARIO" target="_blank" aria-label="TikTok"
+                            class="text-reset">
+                            <i class="bi bi-tiktok"></i>
+                        </a>
+                    </div>
+                    <!-- Busca -->
+                    <div class="mb-4 sticky-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="searchInput"
+                                placeholder="Buscar por nome, categoria ou número do produto..."
+                                aria-label="Buscar produtos">
+                            <button class="btn btn-dark search-btn" type="button" id="searchButton" aria-label="Buscar">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Cards de produtos -->
+                    <div class="d-flex flex-column" id="links-container"></div>
+
+                    <!-- Rodapé -->
+                    <div class="text-center mt-4">
+                        <p class="text-white small">
+                            © 2025 <i class="bi bi-github"></i> JaoOlvr – Todos os direitos reservados
+                        </p>
+                    </div>
+
                 </div>
-
-                <!-- Cards de produtos -->
-                <div class="d-flex flex-column" id="links-container"></div>
-
-                <!-- Rodapé -->
-                <div class="text-center mt-4">
-                    <p class="text-white small">
-                        © 2025 <i class="bi bi-github"></i> JaoOlvr – Todos os direitos reservados
-                    </p>
-                </div>
-
             </div>
         </div>
     </div>
-  </div>
-    
+
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="site/script.js"></script>
 </body>
+
 </html>
